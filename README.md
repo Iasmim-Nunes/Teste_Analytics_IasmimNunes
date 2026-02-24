@@ -55,7 +55,7 @@ pip install pandas numpy matplotlib
 
 ## ▶️ Como Executar o Código Python
 
-1. Certifique-se de ter o Python instalado.
+1. Certifique que o Python está instalado.
 2. Instale as dependências listadas acima.
 3. Execute o script com o comando:
 
@@ -89,7 +89,7 @@ As consultas realizam:
 
 ---
 
-## 📊 Principais Análises Realizadas
+## Principais Análises Realizadas
 
 - Remoção de registros duplicados.
 - Exclusão de valores nulos em colunas essenciais (Quantidade e Preço).
