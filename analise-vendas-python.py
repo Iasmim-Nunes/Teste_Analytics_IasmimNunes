@@ -21,7 +21,7 @@ dados = {
 
 df = pd.DataFrame(dados)
 
-# Inserindo propositalmente valores nulos para simular problema real
+# Inserindo valores nulos se proposito para simular 
 df.loc[5, "Quantidade"] = None
 df.loc[10, "Preco"] = None
 
@@ -51,7 +51,7 @@ print(df.isnull().sum())
 # Cria a coluna Total_Venda
 df["Total_Venda"] = df["Quantidade"] * df["Preco"]
 
-# Cria a coluna Mes
+# Cria a coluna de Mes
 df["Mes"] = df["Data"].dt.month
 
 # Faturamento mensal
