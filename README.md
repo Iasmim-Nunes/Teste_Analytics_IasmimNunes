@@ -1,5 +1,4 @@
 # Teste_Analytics_IasmimNunes
-# Teste_Analytics_IasmimNunes
 
 Repositório desenvolvido como parte do processo seletivo para a vaga de Estagiário de Analytics.
 
