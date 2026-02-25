@@ -44,6 +44,8 @@ df = df.drop_duplicates()
 
 # Remove linhas com nulos em colunas essenciais
 df = df.dropna(subset=["Quantidade", "Preco"])
+df["Quantidade"] = df["Quantidade"].astype(int)
+df["Preco"] = df["Preco"].astype(float)
 
 print("\nValores nulos após limpeza:")
 print(df.isnull().sum())
@@ -66,11 +68,26 @@ produto_mais_vendido = df.groupby("Produto")["Quantidade"].sum().sort_values(asc
 print("\nProduto mais vendido:")
 print(produto_mais_vendido)
 
+total_vendas_por_produto = df.groupby("Produto")["Total_Venda"].sum().sort_values(ascending=False)
+
+print("\nTotal de vendas (R$) por produto:")
+print(total_vendas_por_produto)
+
 # INSIGHTS REAIS
 print("\nINSIGHTS:")
 print(f"- O produto mais vendido foi {produto_mais_vendido.idxmax()} com {produto_mais_vendido.max()} unidades vendidas.")
 print(f"- O mês com maior faturamento foi {faturamento_mensal.idxmax()}.")
 print(f"- O mês com menor faturamento foi {faturamento_mensal.idxmin()}.")
+produto_maior_faturamento = total_vendas_por_produto.idxmax()
+valor_maior_faturamento = total_vendas_por_produto.max()
+print(f"- O produto com maior faturamento foi {produto_maior_faturamento}, "
+      f"totalizando R$ {valor_maior_faturamento:,.2f}.")
+if produto_maior_faturamento != produto_mais_vendido.idxmax():
+    print("- Observa-se que o produto mais vendido em unidades "
+          "não é o mesmo que gera maior faturamento, indicando diferença de ticket médio entre os produtos.")
+else:
+    print("- O produto mais vendido em unidades também é o que gera maior faturamento, "
+          "indicando forte desempenho tanto em volume quanto em receita.")
 
 # Visualização do faturamento mensal
 plt.figure()
